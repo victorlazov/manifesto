@@ -1,0 +1,6 @@
+name: 'Weather service'
+type: module
+description: 'This module provides weather service data as long as some simple modifications'
+core: 8.x
+project: manifesto
+version: 8.x-1.0

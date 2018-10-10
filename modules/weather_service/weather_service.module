@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * code for the cows_user module
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+const ADMINISTRATOR_ROLE = 'administrator';
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds specified description to the title field of the article content type if
+ * the current user is not an admin.
+ *
+ * @param array $form
+ * @param Drupal\Core\Form\FormStateInterface $form_state
+ * @param string $form_id
+ */
+function weather_service_form_node_article_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $user = \Drupal::currentUser();
+  
+  if (!in_array(ADMINISTRATOR_ROLE, $user->getRoles())) {
+    // TODO: I wonder if there is a better wai to alter this.
+    $form['title']['widget'][0]['value']['#description'] = t('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+  }
+}
